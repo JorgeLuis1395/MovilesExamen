@@ -82,16 +82,18 @@ class SistemaOperativoAdaptador(private val listaSistema: List<Paciente1>): Recy
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var nombre: TextView
-        var versionApi: TextView
-        var pesoEnGigas: TextView
-        lateinit var sistema: Paciente1
+        var apellido: TextView
+        var hijos: TextView
+        var asegurado: TextView
+        lateinit var paciente: Paciente1
         var botonDetalle: Button
         var layout: RelativeLayout
 
         init {
             nombre = view.findViewById(R.id.txtv_nombre) as TextView
-            versionApi = view.findViewById(R.id.txtv_detalle1) as TextView
-            pesoEnGigas = view.findViewById(R.id.txtv_detalle2) as TextView
+            apellido = view.findViewById(R.id.txtv_detalle) as TextView
+            hijos = view.findViewById(R.id.txtv_detalle1) as TextView
+            asegurado = view.findViewById(R.id.txtv_detalle2) as TextView
             botonDetalle = view.findViewById(R.id.boton_detalle) as Button
             layout = view.findViewById(R.id.relative_layout) as RelativeLayout
 
@@ -112,10 +114,12 @@ class SistemaOperativoAdaptador(private val listaSistema: List<Paciente1>): Recy
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val sistema = listaSistema[position]
         holder.nombre.setText(sistema.nombre)
-        val versApi = sistema.apellido.toString()
-        holder.versionApi.setText(versApi)
-        val peso = sistema.hijos.toString()
-        holder.pesoEnGigas.setText(peso)
+        val apellido = sistema.apellido.toString()
+        holder.apellido.setText(apellido)
+        val hijos = sistema.hijos.toString()
+        holder.hijos.setText(hijos)
+        val asegurado = sistema.afiliado.toString()
+        holder.asegurado.setText(asegurado)
         holder.botonDetalle.setBackgroundColor(Color.GRAY)
 
         holder.botonDetalle.setOnClickListener{v ->
